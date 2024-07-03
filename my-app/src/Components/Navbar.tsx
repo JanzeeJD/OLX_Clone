@@ -11,15 +11,15 @@ const Navbar = () => {
   return (
 
     <>
-    <div className='flex p-4'>
+    <div className='flex p-4 bg-slate-100 shadow-md'>
       <img src={olx} className='w-11 h-9'/>
-      <div className='flex border-2 border-spacing-1 w-64 p-2 border-black ml-5'>
-        <img src={lens} className='w-6 h-5 mt-1' />
-        <input placeholder='Location' className='ml-3'/>
+      <div className='flex border-2 border-spacing-1 w-64 p-2 border-black ml-5 bg-white'>
+        <img src={lens} className='w-6 h-5 mt-1 ' />
+        <input placeholder='Location' className='ml-3 outline-none'/>
         <img src={arrow} className='w-8 h-7' />
       </div>
-      <div className='flex h-12 ml-4 border-2 border-black'>
-        <input placeholder='Find Cars, Mobile phone and more..' className='ml-3 w-96' />
+      <div className='flex h-12 ml-4 border-2 border-black bg-white'>
+        <input placeholder='Find Cars, Mobile phone and more..' className='ml-3 w-96 outline-none' />
         <img src={search} />
       </div>
       <div className='flex h-12 p-3 ml-10 cursor-pointer'>
