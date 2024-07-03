@@ -1,7 +1,7 @@
 import olx from '../assets/olx.png'
 import lens from '../assets/lens.png'
 import arrow from '../assets/arrow.png'
-import search from '../assets/search.png'
+import search from '../assets/search.png' 
 import Login from './Login'
 import { useState } from 'react'
 
@@ -33,7 +33,7 @@ const Navbar = () => {
         <h1 className='font-bold text-lg ml-3'>+ SELL</h1>
       </div>
     </div>
-    {loginPop && <Login />}
+    {loginPop && <Login setLoginPop={setLoginPop} />}
     </>
   )
 }

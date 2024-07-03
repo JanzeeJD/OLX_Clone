@@ -1,7 +1,22 @@
 import guitar from '../assets/guitar.png'
 import google from '../assets/google.png'
 import phone from '../assets/phone.png'
-const Login = () => {
+import { signInWithPopup } from 'firebase/auth'
+import { auth, googleProvider } from '../Firebase/Setup'
+
+type popupProp = {
+  setLoginPop:any
+}
+
+const Login = (props : popupProp) => {
+
+  const googleSignin = async() =>{
+    try {
+      await signInWithPopup(auth,googleProvider)
+    } catch (err) {
+      console.error(err);
+      }
+   }
   return(
     <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     
@@ -12,6 +27,7 @@ const Login = () => {
        
         <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all  sm:w-96 sm:max-w-lg">
           <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+            <h1 onClick={()=>props?.setLoginPop(false)} className='cursor-pointer font-semibold text-3xl '>X</h1>
             <div className="sm:flex sm:items-start">
               
               <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
@@ -23,7 +39,7 @@ const Login = () => {
                     <img src={phone} className='w-6 h-6'/>
                     <h1 className='font-semibold ml-3'>Continue with phone</h1>
                   </div>
-                  <div className='flex border border-gray-300 p-2 rounded-md mt-4 cursor-pointer'>
+                  <div onClick={googleSignin} className='flex border border-gray-300 p-2 rounded-md mt-4 cursor-pointer'>
                     <img src={google} className='w-6 h-6'/>
                     <h1 className='font-semibold ml-12'>Continue with Google</h1>
                   </div>
