@@ -5,7 +5,11 @@ import search from '../assets/search.png'
 import Login from './Login'
 import { useState } from 'react'
 
-const Navbar = () => {
+type searchProp ={
+  setSearch :any 
+}
+
+const Navbar = (props:searchProp) => {
  
   const [loginPop,setLoginPop] = useState(false)
   return (
@@ -19,7 +23,7 @@ const Navbar = () => {
         <img src={arrow} className='w-8 h-7' />
       </div>
       <div className='flex h-12 ml-4 border-2 border-black bg-white'>
-        <input placeholder='Find Cars, Mobile phone and more..' className='ml-3 w-96 outline-none' />
+        <input onChange={(e)=> props?.setSearch(e.target.value)} placeholder='Find Cars, Mobile phone and more..' className='ml-3 w-96 outline-none' />
         <img src={search} />
       </div>
       <div className='flex h-12 p-3 ml-10 cursor-pointer'>

@@ -8,6 +8,7 @@ import Footer from "./Footer"
 const main = () => {
 
   const [prod,setProd] = useState([])
+  const [search,setSearch] = useState("")
 
   const getProducts = () =>{
     fetch('https://fakestoreapi.com/products')
@@ -19,9 +20,9 @@ const main = () => {
   },[])
   return (
     <div>
-      <Navbar/>
+      <Navbar setSearch={setSearch} />
       <Menubar/>
-      <Home products={prod}/>
+      <Home products={prod} search={search} />
       <Footer/>
     </div>
   )
