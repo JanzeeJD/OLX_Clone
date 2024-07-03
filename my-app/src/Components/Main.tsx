@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Menubar from "./Menubar"
 import Navbar from "./Navbar"
 import Home from "./Home"
+import Footer from "./Footer"
 
 
 const main = () => {
@@ -21,6 +22,7 @@ const main = () => {
       <Navbar/>
       <Menubar/>
       <Home products={prod}/>
+      <Footer/>
     </div>
   )
 }
