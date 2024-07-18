@@ -3,30 +3,36 @@ import Menubar from "./Menubar"
 import Navbar from "./Navbar"
 import Home from "./Home"
 import Footer from "./Footer"
+import {Product} from "./Home"
 
 
-const main = () => {
+const Main = () => {
+  const [prod, setProd] = useState<Product[]>([]);
+  const [search, setSearch] = useState<string>("");
+  
 
-  const [prod,setProd] = useState([])
-  const [search,setSearch] = useState("")
-  const [menu,SetMenu] = useState("")
+  useEffect(() => {
+    const getProducts = async () => {
+      await fetch('https://fakestoreapi.com/products')
+        .then(res => res.json())
+        .then(json => setProd(json));
+    };
+    getProducts();
+  }, []);
 
-  const getProducts = () =>{
-    fetch('https://fakestoreapi.com/products')
-            .then(res=>res.json())
-            .then(json=>setProd(json))
-  }
-  useEffect(()=>{
-    getProducts()
-  },[])
+
+  const addProduct = (newProduct: Product) => {
+    setProd(prevProducts => [...prevProducts, newProduct]);
+  };
+
   return (
     <div>
-      <Navbar setSearch={setSearch} />
-      <Menubar setMenu ={SetMenu} />
-      <Home products={prod} search={search} menu={menu} />
-      <Footer/>
+      <Navbar setSearch={setSearch} addProduct={addProduct} />
+      <Menubar />
+      <Home products={prod} search={search} />
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default main
+export default Main;
